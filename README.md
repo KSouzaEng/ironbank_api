@@ -75,10 +75,9 @@ php artisan serve
 ```
 ## Documentação API
 
-```
+
 - [Visual Studio Code: Para desenvolvimento do projeto (ou editor de sua preferência)](https://github.com/KSouzaEng/api-documentation/blob/master/README.md)
 
-```
 ## Melhorias
 
 - Como melhoria do projeto seria interesante expandir o projeto inserindo mais funções, tais como função de listagem de ganhos mensais e também possibilitar a transferência dos ganhos para uma conta.
