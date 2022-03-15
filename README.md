@@ -1,61 +1,78 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<p align="center"><strong>Investiments API</strong></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Sobre Investiments API
 
-## About Laravel
+Esta api tem como objetivo simular um sistema de investimentos, por meio de suas funções é possível fazer investimento,visualizar a lista de investimentos, obter informações sobre o ganho do investimento, bem como o processo de fazer retiradas.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Construção da API
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Laravel 8.0.
+- PHP ^8.1.2
+-  Apache 2.4.52
+-  MariaDB 10.4.22
+-  Composer 2.2.6
+  
+## Ferramentas para executar o projeto
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Para executar o projeto, será necessário instalar os seguintes programas:
+- [XAMPP - versão 8.1.2 / PHP 8.1.2: Usado para iniciar o servidor web e fazer o gerenciamento do banco de dados (PHP embutido, MySQL  e Composer)](https://www.apachefriends.org/download.html)
+- [Visual Studio Code: Para desenvolvimento do projeto (ou editor de sua preferência)](https://code.visualstudio.com/download)
+Ou a ferramenta de sua prefrência
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Instalação do projeto
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Para iniciar o desenvolvimento, é necessário clonar o projeto do GitHub em um diretório segundo as especificações a seguir:
+```shell
+Caso esteja usando o laragon entre em cd "C:\laragon\www "  e abra o cmd ou terminal nesta pasta e cole o comando a seguir  
+git clone https://github.com/KSouzaEng/ironbank_api.git
 
-## Laravel Sponsors
+Caso esteja usando o laragon entre em cd "C:\xampp\htdocs"  e abra o cmd ou terminal nesta pasta e cole o comando a seguir
+git clone https://github.com/KSouzaEng/ironbank_api.git
+```
+##  Configurando a aplicação
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Antes de rodar a aplicação é necessário executar os seguintes commandos.
 
-### Premium Partners
+Instala dependências necessárias
+```shell
+composer install
+```
+Copia o arquivo de exemplo para fazer a conexão com a base de dados
+```shell
+cp .env.example .env
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+Gera uma chave aleatório com 32 caracteres para manter os dados da aplicação protegidos
+```shell
+php artisan key:generate
+```
 
-## Contributing
+Abra o arquivo .env e inclua nele o nome de sua base de dados. Procure pela linha DB_DATABASE
+```shell
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nomedobanco
+DB_USERNAME=root
+DB_PASSWORD=
+```
+- OBS : Caso não estiver usando as configurações padrões do Mysql é necesário informar qual gerenciador está usando, o host, a porta, o usuário e a senha
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Para gerar as tabelas do banco de dados é necessário executar o comando a seguir.
+```shell
+php artisan migrate --seed
+```
+OBS: A flag --seed é usada para inserir usuários fakes na tabela de users.
 
-## Code of Conduct
+Para gearar o token jwt que permite fazer a conexão com o front da aplicação
+```shell
+php artisan jwt:secret
+```
+ Para executar a apliacação
+```shell
+php artisan serve
+```
+## Melhorias
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- Como melhoria do projeto seria interesante expandir o projeto inserindo mais funções, tais como função de listagem de ganhos mensais e também possibilitar a transferência dos ganhos para uma conta.
