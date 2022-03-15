@@ -76,7 +76,7 @@ php artisan serve
 ## Documentação API
 
 ```
-- [XAMPP - versão 8.1.2 / PHP 8.1.2: Usado para iniciar o servidor web e fazer o gerenciamento do banco de dados (PHP embutido, MySQL  e Composer)]         (https://github.com/KSouzaEng/api-documentation/blob/master/README.md)
+- [Documentação API](https://github.com/KSouzaEng/api-documentation/blob/master/README.md)
 
 ```
 ## Melhorias
