@@ -76,7 +76,7 @@ php artisan serve
 ## Documentação API
 
 
-- [Visual Studio Code: Para desenvolvimento do projeto (ou editor de sua preferência)](https://github.com/KSouzaEng/api-documentation/blob/master/README.md)
+- [Ir para a documentação](https://github.com/KSouzaEng/api-documentation/blob/master/README.md)
 
 ## Melhorias
 
