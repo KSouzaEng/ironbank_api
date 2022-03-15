@@ -65,7 +65,7 @@ php artisan migrate --seed
 ```
 OBS: A flag --seed é usada para inserir usuários fakes na tabela de users.
 
-Para gearar o token jwt que permite fazer a conexão com o front da aplicação
+Para gerar o token jwt que permite fazer a conexão com o front da aplicação
 ```shell
 php artisan jwt:secret
 ```
