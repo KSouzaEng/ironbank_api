@@ -20,6 +20,10 @@ class CreateInvestimentosTable extends Migration
             $table->string('nome_investidor');
             $table->date('data_investimento');
             $table->float('valor_investimento');
+            $table->float('valor_investimento_ganho')->default(0);
+            $table->float('valor_investimento_ganho_retirada')->default(0);
+            $table->float('ganho_investimento')->default(0);
+            $table->float('valor_retirada')->default(0);
             $table->timestamps();
         });
     }

@@ -24,5 +24,7 @@ Route::post('logout',[AuthController::class,'logout']);
 Route::post('me', [AuthController::class,'me']);
 
 Route::post('investir',[InvestimentoController::class,'investir']);
-Route::get('investimentos',[InvestimentoController::class,'getInvestiments']);
+Route::get('investimentos/{id_user}',[InvestimentoController::class,'getInvestiments']);
+Route::get('calcula/{id_investimento}',[InvestimentoController::class,'calcula']);
+Route::post('retirada',[InvestimentoController::class,'retirada']);
 
