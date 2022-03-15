@@ -1,0 +1,33 @@
+$d = Carbon::parse($i->data_investimento);
+                 return response()->json(['investimento' =>date('d')], 200);
+                 if(date('d') ==  $d->format('d')){
+
+                    $Date = strtotime($i->data_investimento);
+                     $um_ano = date('Y-m-d', strtotime('+1 year'));
+                     $dois_anos = date('Y-m-d', strtotime('+2 year'));
+                    if($Date < strtotime($um_ano)){
+
+                        $imposto = $i->ganho_investimento * 0.225;
+                        $r =  $i->valor_investimento_ganho - $imposto;
+                        $retirada = $r - $request->valor_retirada;
+                        //   $atualiza = Investimento::where('data_investimento',$investimento[0]['data_investimento'])->update(['valor_investimento_ganho_retirada'=> $retirada,'valor_retirada' => $request->valor_retirada ]);
+
+                       }else if($Date >= strtotime($um_ano) && $Date <= strtotime($dois_anos)){
+
+                        $imposto = $i->ganho_investimento * 0.185;
+                        $r =  $i->valor_investimento_ganho - $imposto;
+                        $retirada = $r - $request->valor_retirada;
+                          $atualiza = Investimento::where('data_investimento',$i->data_investimento)->update(['valor_investimento_ganho_retirada'=> $retirada,'valor_retirada' => $request->valor_retirada ]);
+                        return response()->json(['investimento' => $retirada], 200);
+                       }else if($Date > strtotime($dois_ano)){
+
+                        $imposto = $i->ganho_investimento* 0.15    ;
+                        $r =  $i->valor_investimento_ganho - $imposto;
+                        $retirada = $r - $request->valor_retirada;
+                          $atualiza = Investimento::where('data_investimento',$i->data_investimento)->update(['valor_investimento_ganho_retirada'=> $retirada,'valor_retirada' => $request->valor_retirada ]);
+                        return response()->json(['investimento' => $retirada], 200);
+
+                    }
+                   }else{
+                    return response()->json(['investimento' =>  $i->valor_investimento_ganho], 200);
+                   }
